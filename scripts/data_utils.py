@@ -94,5 +94,3 @@ def analyze_numericals(df):
                       textcoords = 'offset points')
       plt.show()
 
-# Assuming you have loaded your data into a DataFrame named 'df'
-# analyze_numericals(df)
