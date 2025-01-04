@@ -217,3 +217,63 @@ def plot_countplots(df, figsize=(6, 4)):
   plt.ylabel('Frequency')
   plt.xticks(rotation=45) 
   plt.show()
+def plot_distributions_and_countplots(df):
+  # Sales distribution
+  plt.figure(figsize=(10, 6))
+  sns.histplot(df['sales'], bins=30, kde=True)
+  plt.title('Distribution of Sales')
+  plt.xlabel('Sales')
+  plt.ylabel('Frequency')
+  plt.show()
+
+  # Customers distribution
+  plt.figure(figsize=(10, 6))
+  sns.histplot(df['customers'], bins=30, kde=True)
+  plt.title('Distribution of Customers')
+  plt.xlabel('Customers')
+  plt.ylabel('Frequency')
+  plt.show()
+
+  # Day of week countplot
+  plt.figure(figsize=(8, 6))
+  sns.countplot(x='day_of_week', data=df)
+  plt.title('Distribution of Day of Week')
+  plt.xlabel('Day of Week')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)
+  plt.show()
+
+  # Store open countplot
+  plt.figure(figsize=(6, 4))
+  sns.countplot(x='store_open', data=df)
+  plt.title('Distribution of Store Open')
+  plt.xlabel('Store Open')
+  plt.ylabel('Frequency')
+  plt.show()
+
+  # Promotion countplot (with explicit labels)
+  plt.figure(figsize=(6, 4))
+  sns.countplot(x='promotion', data=df)
+  plt.title('Distribution of Promotions')
+  plt.xlabel('Promotion (0: No Promo, 1: Promo)')
+  plt.ylabel('Count')
+  plt.xticks([0, 1], ['No Promo', 'Promo'])  # Set explicit labels for 0 and 1
+  plt.show()
+
+  # State holiday countplot
+  plt.figure(figsize=(6, 4))
+  sns.countplot(x='state_holiday', data=df)
+  plt.title('Distribution of State Holiday')
+  plt.xlabel('State Holiday')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+  plt.show()
+
+  # School holiday countplot
+  plt.figure(figsize=(6, 4))
+  sns.countplot(x='school_holiday', data=df)
+  plt.title('Distribution of School Holiday')
+  plt.xlabel('School Holiday')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+  plt.show()
