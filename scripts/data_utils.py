@@ -165,46 +165,55 @@ def plot_countplot_promo_interval(df):
 
   # Show the plot
   plt.show()
-       
+def plot_countplot_day_of_week(df):
 
+  plt.figure(figsize=(8, 6))  # Set figure size
+  sns.countplot(x='day_of_week', data=df)
 
+  # Customize the plot
+  plt.title('Distribution of Day of Week')
+  plt.xlabel('Day of Week')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)
 
+  # Show the plot
+  plt.show()
+def plot_countplot_store_open(df):
+  plt.figure(figsize=(6, 4))  
+  sns.countplot(x='store_open', data=df)
 
-def analyze_numericals(df):
-  """
-  Performs univariate analysis on numerical columns in a DataFrame.
+  # Customize the plot
+  plt.title('Distribution of Store Open')
+  plt.xlabel('Store Open')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)
 
-  Args:
-      df (pd.DataFrame): The DataFrame containing the data.
+  # Show the plot
+  plt.show()
+def plot_countplots(df, figsize=(6, 4)):
+  # Create and customize countplot for 'promotion'
+  plt.figure(figsize=figsize)
+  sns.countplot(x='promotion', data=df)
+  plt.title('Distribution of Promotions')
+  plt.xlabel('Promotion (0: No Promo, 1: Promo)')
+  plt.ylabel('Count')
+  plt.xticks([0, 1], ['No Promo', 'Promo'])  # Set explicit labels for 0 and 1
+  plt.show()
 
-  Returns:
-      None
-  """
-  numerical_columns = df.select_dtypes(include=[np.number]).columns
+  # Create and customize countplot for 'state_holiday'
+  plt.figure(figsize=figsize)
+  sns.countplot(x='state_holiday', data=df)
+  plt.title('Distribution of State Holiday')
+  plt.xlabel('State Holiday')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45)  
+  plt.show()
 
-  for column in numerical_columns:
-    # Continuous variables (more than 10 unique values)
-    if len(df[column].unique()) > 10:
-      plt.figure(figsize=(8, 6))
-      sns.histplot(df[column], kde=True)
-      plt.title(f'Histogram of {column}')
-      plt.xlabel(column)
-      plt.ylabel('Frequency')
-      plt.show()
-    # Discrete or ordinal variables (less than or equal to 10 unique values)
-    else:
-      plt.figure(figsize=(8, 6))
-      ax = sns.countplot(x=column, data=df)
-      plt.title(f'Count of {column}')
-      plt.xlabel(column)
-      plt.ylabel('Count')
-
-      # Annotate each bar with its count
-      for p in ax.patches:
-          ax.annotate(format(p.get_height(), '.0f'), 
-                      (p.get_x() + p.get_width() / 2., p.get_height()), 
-                      ha = 'center', va = 'center', 
-                      xytext = (0, 5), 
-                      textcoords = 'offset points')
-      plt.show()
-
+  # Create and customize countplot for 'school_holiday'
+  plt.figure(figsize=figsize)
+  sns.countplot(x='school_holiday', data=df)
+  plt.title('Distribution of School Holiday')
+  plt.xlabel('School Holiday')
+  plt.ylabel('Frequency')
+  plt.xticks(rotation=45) 
+  plt.show()
